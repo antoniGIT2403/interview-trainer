@@ -1,0 +1,68 @@
+<div class="main-container ">
+
+    <div class=" col-lg-7  question-container">
+
+
+
+        <div style="font-size: large;margin-bottom: 2rem;">
+            {{currentQuestion.id}}. {{ currentQuestion.question}}
+        </div>
+
+
+        <div>
+
+
+            <button *ngFor="let option of currentQuestion.options" (click)='answerSelection(option)'
+                [ngClass]="renderSelectedCss(option)" [disabled]="displayCorrection ">
+                <span>{{option}}</span>
+
+            </button>
+
+        </div>
+        <button class="btn-suivant" (click)='correction()' *ngIf="!displayCorrection"
+            [disabled]="currentQuestion.reponseUser.length < 1">
+            Correction
+        </button>
+        <div class="btn-suivant" (click)='displayNextQuestion()' *ngIf="displayCorrection && !displayRecapBtn">
+            Suivant
+        </div>
+        <div class="btn-suivant" (click)='redirectResult()' *ngIf="displayRecapBtn && displayCorrection">
+            Voir récapitulatif
+        </div>
+
+
+
+    </div>
+
+
+    <div class=" col-lg-3 correction-container" *ngIf="displayCorrection">
+
+
+
+
+        <div class="crt-block-correct" *ngIf="currentQuestion.isResultCorrect">
+
+            <span> Reponse correct </span>
+        </div>
+        <div class="crt-block-false" *ngIf="!currentQuestion.isResultCorrect">
+
+            <span> Reponse Fausse </span>
+        </div>
+        <div class="crt-block-theme">
+
+            Theme abordé: {{currentQuestion.theme}}
+        </div>
+        <div class="crt-block-detail">
+
+            <span> {{currentQuestion.detailCorrection}} </span>
+        </div>
+
+
+        <div class="crt-block-lien" style=" bottom:3rem;position: absolute; ">
+
+            Pour plus d'information aller voir ici : <a [href]="currentQuestion.lienInfo" target="_blank">
+                {{currentQuestion.lienInfo}} </a>
+        </div>
+
+    </div>
+</div>
