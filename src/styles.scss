@@ -1,1 +1,86 @@
+// Custom Theming for Angular Material
+// For more information: https://material.angular.io/guide/theming
+@import '~@angular/material/theming';
+// Plus imports for other components in your app.
+
+// Include the common styles for Angular Material. We include this here so that you only
+// have to load a single css file for Angular Material in your app.
+// Be sure that you only ever include this mixin once!
+@include mat-core();
+
+// Define the palettes for your theme using the Material Design palettes available in palette.scss
+// (imported above). For each palette, you can optionally specify a default, lighter, and darker
+// hue. Available color palettes: https://material.io/design/color/
+$quizz-app-primary: mat-palette($mat-indigo);
+$quizz-app-accent: mat-palette($mat-pink, A200, A100, A400);
+
+// The warn palette is optional (defaults to red).
+$quizz-app-warn: mat-palette($mat-red);
+
+// Create the theme object. A theme consists of configurations for individual
+// theming systems such as "color" or "typography".
+$quizz-app-theme: mat-light-theme((color: (primary: $quizz-app-primary,
+        accent: $quizz-app-accent,
+        warn: $quizz-app-warn,
+      )));
+
+// Include theme styles for core and each component used in your app.
+// Alternatively, you can import and @include the theme mixins for each component
+// that you are using.
+@include angular-material-theme($quizz-app-theme);
+
 /* You can add global styles to this file, and also import other style files */
+
+html,
+body {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+  //background: #e7e6d8;
+  background: rgb(201,201,201);
+background: linear-gradient(118deg, rgba(201,201,201,0.5046393557422969) 0%, rgba(255,255,255,1) 100%);
+  // background: rgb(153, 144, 1);
+  // background: linear-gradient(118deg, rgba(153, 144, 1, 0.28335084033613445) 0%, rgba(201, 201, 201, 1) 76%, rgba(255, 255, 255, 1) 100%);
+}
+
+$base-color: #3906c6;
+
+.button-test {
+  color: white;
+  min-height: 3rem;
+  font-size: 20px;
+  background: #3906c6;
+  width: 10rem;
+  border-radius: 10px;
+  margin: 2rem auto 2rem auto;
+  padding: 1rem;
+  text-align: center;
+  box-shadow: inset -1px 3px 8px 5px #6744c7, 2px 5px 16px 0px #0b325e, 5px 5px 15px 5px rgb(0 0 0 / 0%);
+
+  &:hover {
+    cursor: pointer;
+    scale: 1.1;
+  }
+}
+
+.button-test a {
+  color: white;
+  text-decoration: none;
+}
+
+p {
+  font-size: 1.6rem;
+  line-height: 1.5;
+}
+
+h4 {
+  font-size: 2.2rem !important;
+  line-height: 1;
+}
+
+h5 {
+  font-size: 2rem !important;
+}

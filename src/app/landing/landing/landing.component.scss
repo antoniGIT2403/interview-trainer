@@ -1,0 +1,36 @@
+.wrapper-test-categorie {
+    display: grid;
+    grid-template-columns: 0.5fr 0.5fr 0.5fr 0.5fr;
+}
+
+
+
+.main-screen-container {
+    display: flex;
+    border: 1px solid black;
+    width: 100%;
+    min-height: 300px;
+    flex-direction: column;
+     text-align: center;
+    padding: 3rem;
+    box-shadow: 5px 5px 15px 5px rgba(0, 0, 0, 0.53);
+    border-radius: 10px;
+    background: white;
+}
+
+.test-skill-container{
+    margin-top: 5rem;
+    display: flex;
+    border: 1px solid black;
+    width: 100%;
+    min-height: 300px;
+    flex-direction: column;
+    padding: 3rem;
+    box-shadow: 5px 5px 15px 5px rgba(0, 0, 0, 0.53);
+    border-radius: 10px;
+    background: white;
+}
+img{
+    box-shadow: 5px 5px 15px 5px rgba(0,0,0,0.34);
+    margin: 1rem;
+}

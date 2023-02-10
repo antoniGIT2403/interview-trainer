@@ -3,32 +3,17 @@
     <div class=" col-lg-7  question-container">
 
         <div style="font-size: large;margin-bottom: 2rem;">
-            {{getIndexQuestion()}}. {{ currentQuestion?.question}}
+            {{currentQuestion.id}}. {{ currentQuestion.question}}
         </div>
-
         <div>
-
-            <button *ngFor="let option of currentQuestion.options" (click)='answerSelection(option)'
-                [ngClass]="renderSelectedCss(option)" [disabled]="displayCorrection ">
+            <button *ngFor="let option of currentQuestion.options" [ngClass]="renderSelectedCss(option)"
+                [disabled]="true">
                 <span>{{option}}</span>
             </button>
 
         </div>
-        <button class="btn-suivant" (click)='correction()' *ngIf="!displayCorrection"
-            [disabled]="currentQuestion.reponseUser.length < 1">
-            Correction
-        </button>
-        <div class="btn-suivant" (click)='displayNextQuestion()' *ngIf="displayCorrection && !displayRecapBtn">
-            Suivant
-        </div>
-        <div class="btn-suivant" (click)='redirectResult()' *ngIf="displayRecapBtn && displayCorrection">
-            Voir récapitulatif
-        </div>
-
-
     </div>
-
-    <div class=" col-lg-3 correction-container" *ngIf="displayCorrection">
+    <div class=" col-lg-3 correction-container" >
 
         <div class="crt-block-correct" *ngIf="currentQuestion.isResultCorrect">
 

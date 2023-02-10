@@ -1,13 +1,55 @@
+<div class="container">
 
+    <div *ngIf="total === 0" class="main-container" >
+        <p style="text-align: center">You have not pass the test yet. </p>
+        <p style="text-align: center"> Click below to start:</p>
+        <div class="button-test" >
+            <a mat-tab-link routerLink="/quizz-angular" routerLinkActive="active">Quizz Angular</a>
+        </div>
+       
 
-<div  class="container">   
+    </div>
 
-    <div style="height: 600px; border: 1px solid black;margin: 2rem; text-align: center;">
+    <ng-container *ngIf="total > 0">
+        <div *ngIf="!displayReview" style="display: flex; margin-top: 3rem;" >   
 
-<p style="margin: 2rem;"> Votre score est de {{score}}/{{total}}   </p>
+           
 
+            <!-- <div style="margin: 2rem;" *ngFor="let answer of questionService.listQuestionsAnswered">
 
-</div>
+            </div> -->
+            <div class="answer-theme-container">
+                <p style="margin: 2rem;  text-align: center;"> Votre score est de {{score}}/{{total}} </p>
+                <!-- <p></p> -->
+                <div> {{scoreBasic}} / {{listBasic.length}} BASIC  <progress  [value]="scoreBasic" [max]="listBasic.length"></progress> </div>
+                <div>{{scoreHttp}} / {{listHttp.length}} HTTP  <progress  [value]="scoreHttp" [max]="listHttp.length"></progress></div>
+                <div>{{scoreComponent}} / {{listComponent.length}} COMPONENT <progress  [value]="scoreComponent" [max]="listComponent.length"></progress></div>
+                <div>{{scoreTemplate}} / {{listTemplate.length}} TEMPLATES <progress  [value]="scoreTemplate" [max]="listTemplate.length"></progress></div>
+                <div>{{scoreDirective}} / {{listRouting.length}} DIRECTIVE <progress  [value]="scoreDirective" [max]="listRouting.length"></progress></div>
+                <div>{{scoreDi}} / {{listDI.length}} DI<progress  [value]="scoreDi" [max]="listDI.length"></progress></div>
+                <div>{{scoreRouting}} / {{listRouting.length}} ROUTING<progress  [value]="scoreRouting" [max]="listRouting.length"></progress> </div>
+                <div>{{scoreForms}} / {{listForms.length}} FORMS <progress  [value]="scoreForms" [max]="listForms.length"></progress></div>
+                <div>{{scoreTesting}} / {{listTesting.length}} TESTING <progress  [value]="scoreTesting" [max]="listTesting.length"></progress></div>
+                <div>{{scoreInternationalisation}} / {{listInternationalisation.length}} i18n <progress  [value]="scoreInternationalisation" [max]="listInternationalisation.length"></progress></div>
+                <div>{{scoreCompilation}} / {{listCompilation.length}} COMPILATION <progress  [value]="scoreCompilation" [max]="listCompilation.length"></progress></div>
+            </div>
+            <div class="dashboard-container">
+                <div >
+                    <p style="font-size:1.6rem; text-align: center;"> Your answers </p>
+                    <div  class="your-answer" *ngFor="let answer of questionService.listQuestionsAnswered" [ngClass]="answer.isResultCorrect ? 'correct-shadow' : 'wrong-shadow'">
+                        <p class="answer" (click)="reviewQuestion(answer)" [ngClass]="answer.isResultCorrect ? 'correctAns' : 'wrongAns'">
+                            {{answer.question}} </p>
+                        <span [ngClass]="answer.isResultCorrect ? 'correctAns' : 'wrongAns'"  >  {{answer.isResultCorrect ? '√ Correct' : 'X Wrong' }}
+                            </span>
+                    </div>
+                </div>
 
+            </div>
+        </div>
+        <ng-container *ngIf="displayReview">
+            <app-review [currentQuestion]="currentQuestion"></app-review>
+            <button (click)="displayReview = false"> Revenir au récapitulatif</button>
+        </ng-container>
+    </ng-container>
 
 </div>
